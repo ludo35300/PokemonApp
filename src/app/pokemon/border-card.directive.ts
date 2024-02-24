@@ -25,7 +25,7 @@ export class BorderCardDirective {
     this.setBorder(this.initialColor);
    }
 
-
+  // ajuste la hauteur des catres pokemon 
   setHeight(height: number){
     this.el.nativeElement.style.height = `${height}px`;
   }

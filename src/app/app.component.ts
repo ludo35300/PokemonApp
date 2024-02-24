@@ -1,12 +1,14 @@
 import { Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { PokemonModule } from './pokemon/pokemon.module';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet
+    RouterOutlet,
+    PokemonModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
