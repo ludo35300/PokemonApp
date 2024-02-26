@@ -1,0 +1,28 @@
+<h1 class="center">Mes troupes</h1>
+
+<div class='container'>
+  <div class="row">
+
+    <div *ngFor="let troupe of troupeList" class="troupe col s6 m4">
+      <div (click)="goToTroupe(troupe)" class='main'>
+        <img class='card-image' [src]="troupe.picture" [alt]="troupe.name" />
+        <div class='card-stacked'>
+          <div class='niveau card-content'>
+            <div class="niveauActuel">
+              <ins>Niveau</ins>
+              <p>{{troupe.niveau}}</p>
+            </div>
+            <div class="niveauMax">
+              <ins>Max</ins>
+              <p>{{troupe.niveauMax}}</p>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class='creation'>
+          <p><ins>Crée le {{troupe.created | date:"dd/MM/yyyy"}}</ins></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

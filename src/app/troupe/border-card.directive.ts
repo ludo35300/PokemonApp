@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
-  selector: '[pkmBorderCard]',
+  selector: '[trpBorderCard]',
   standalone: true
 })
 export class BorderCardDirective {
@@ -12,25 +12,25 @@ export class BorderCardDirective {
   constructor(private el: ElementRef) {
     this.setHeight(this.defaultHeight);
     this.setBorder(this.initialColor)
-   }
+  }
 
-   @Input('pkmBorderCard') borderColor!: string ; // alias
+  @Input('trpBorderCard') borderColor!: string; // alias
 
-   // Change la couleur lors du survol
-   @HostListener('mouseenter') onMouseEnter(){
+  // Change la couleur lors du survol
+  @HostListener('mouseenter') onMouseEnter() {
     this.setBorder(this.borderColor || this.defaultColor);
-   }
-   // Change la couleur lorsqu'on quitte
-   @HostListener('mouseleave') onMouseLeave(){
+  }
+  // Change la couleur lorsqu'on quitte
+  @HostListener('mouseleave') onMouseLeave() {
     this.setBorder(this.initialColor);
-   }
+  }
 
   // ajuste la hauteur des catres pokemon 
-  setHeight(height: number){
+  setHeight(height: number) {
     this.el.nativeElement.style.height = `${height}px`;
   }
 
-  setBorder(color: string){
+  setBorder(color: string) {
     this.el.nativeElement.style.border = `solid 4px ${color}`;
   }
 

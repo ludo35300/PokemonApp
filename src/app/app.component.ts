@@ -1,6 +1,6 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PokemonModule } from './pokemon/pokemon.module';
+import { TroupeModule } from './troupe/troupe.module';
 
 
 @Component({
@@ -8,12 +8,11 @@ import { PokemonModule } from './pokemon/pokemon.module';
   standalone: true,
   imports: [
     RouterOutlet,
-    PokemonModule
+    TroupeModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 
-export class AppComponent { 
+export class AppComponent {
 }
- 
