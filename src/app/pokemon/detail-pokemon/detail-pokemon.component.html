@@ -1,5 +1,5 @@
 <div *ngIf="pokemon" class="row">
-    <div class="col s12 m8 offset-m2">
+  <div class="col s12 m8 offset-m2">
     <h2 class="header center">{{ pokemon.name }}</h2>
     <div class="card horizontal hoverable">
       <div class="card-image">
@@ -24,7 +24,8 @@
               <tr>
                 <td>Types</td>
                 <td>
-                  <span *ngFor="let type of pokemon.types" class="{{ type.toString() | pokemonTypeColor }}">{{ type }}</span>
+                  <span *ngFor="let type of pokemon.types" class="{{ type.toString() | pokemonTypeColor }}">{{ type
+                    }}</span>
                 </td>
               </tr>
               <tr>
@@ -36,9 +37,11 @@
         </div>
         <div class="card-action">
           <a (click)="goToPokemonList()">Retour</a>
+          <a (click)="goToEditPokemon(pokemon)">Editer</a>
+          <a (click)="deletePokemon(pokemon)">Supprimer</a>
         </div>
       </div>
     </div>
-    </div>
-    </div>
-    <h4 *ngIf='!pokemon' class="center">Aucun pokémon à afficher !</h4>
+  </div>
+</div>
+<h4 *ngIf='!pokemon' class="center">Aucun pokémon à afficher !</h4>

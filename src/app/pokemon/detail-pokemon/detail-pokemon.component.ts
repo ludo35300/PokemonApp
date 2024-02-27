@@ -6,29 +6,44 @@ import { PokemonTypeColorPipe } from "../pokemon-type-color.pipe";
 import { PokemonService } from '../pokemon.service';
 
 @Component({
-    selector: 'app-detail-pokemon',
-    standalone: true,
-    templateUrl: './detail-pokemon.component.html',
-    styleUrl: './detail-pokemon.component.scss',
-    imports: [NgIf, CommonModule, PokemonTypeColorPipe]
+  selector: 'app-detail-pokemon',
+  standalone: true,
+  templateUrl: './detail-pokemon.component.html',
+  styleUrl: './detail-pokemon.component.scss',
+  imports: [NgIf, CommonModule, PokemonTypeColorPipe]
 })
-export class DetailPokemonComponent implements OnInit{
-  pokemonList!: Pokemon[];
-  pokemon!: Pokemon|undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router, private pokemonService : PokemonService){ }
+export class DetailPokemonComponent implements OnInit {
+  pokemonList!: Pokemon[];
+  pokemon!: Pokemon | undefined;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private pokemonService: PokemonService
+  ) { }
 
 
   ngOnInit(): void {
     // on recupere l'id
-    const pokemonId: string|null = this.route.snapshot.paramMap.get('id');
+    const pokemonId: string | null = this.route.snapshot.paramMap.get('id');
 
     // si il y a bien un id (sinon id=undefined) (+ transforme string to number)
-    if(pokemonId){
-      this.pokemon = this.pokemonService.getPokemonById(+pokemonId);
+    if (pokemonId) {
+      this.pokemonService.getPokemonById(+pokemonId)
+        .subscribe(pokemon => this.pokemon = pokemon);;
     }
   }
-  goToPokemonList(){
+
+  deletePokemon(pokemon: Pokemon) {
+    this.pokemonService.deletePokemonById(pokemon.id)
+      .subscribe(() => this.goToPokemonList());
+  }
+  goToPokemonList() {
     this.router.navigate(['/pokemons']);
+  }
+
+  goToEditPokemon(pokemon: Pokemon) {
+    this.router.navigate(['/edit/pokemon', pokemon.id]);
   }
 }

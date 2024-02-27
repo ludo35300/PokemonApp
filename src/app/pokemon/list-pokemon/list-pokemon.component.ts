@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { Pokemon } from '../pokemon';
 import { BorderCardDirective } from '../border-card.directive';
@@ -9,8 +9,8 @@ import { PokemonService } from '../pokemon.service';
 @Component({
   selector: 'app-list-pokemon',
   standalone: true,
-  imports: [ 
-    NgFor, 
+  imports: [
+    NgFor,
     CommonModule,
     BorderCardDirective,
     PokemonTypeColorPipe
@@ -19,16 +19,20 @@ import { PokemonService } from '../pokemon.service';
   styleUrl: './list-pokemon.component.scss'
 })
 
-export class ListPokemonComponent{
+export class ListPokemonComponent implements OnInit {
   pokemonList!: Pokemon[];
 
-  constructor(private router: Router, private pokemonService: PokemonService){}
+  constructor(
+    private router: Router,
+    private pokemonService: PokemonService
+  ) { }
 
-  ngOnInit(){
-    this.pokemonList = this.pokemonService.getPokemonList();
+  ngOnInit() {
+    this.pokemonService.getPokemonList()
+      .subscribe(pokemonList => this.pokemonList = pokemonList)
   }
-  
-  goToPokemon(pokemon: Pokemon){
+
+  goToPokemon(pokemon: Pokemon) {
     this.router.navigate(['/pokemon/', pokemon.id])
   }
 }
