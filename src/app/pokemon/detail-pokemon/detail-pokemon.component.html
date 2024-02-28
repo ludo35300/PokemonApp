@@ -1,18 +1,20 @@
-<div *ngIf="pokemon" class="row">
-  <div class="col s12 m8 offset-m2">
+<div class='container'>
+  <div *ngIf="pokemon" class="row">
     <h2 class="header center">{{ pokemon.name }}</h2>
-    <div class="card horizontal hoverable">
-      <div class="card-image">
-        <img [src]="pokemon.picture">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <table class="bordered striped">
+    <div id="cards">
+
+
+      <figure class="card {{ pokemon.types[0].toString() | cardTypeColorTs }}">
+        <div class="card__image-container">
+          <img [src]="pokemon.picture" [alt]="pokemon.name" class="card__image">
+        </div>
+
+        <figcaption class="card__caption">
+          <h1 class="card__name">{{pokemon.name}}</h1>
+
+
+          <table class="card__stats">
             <tbody>
-              <tr>
-                <td>Nom</td>
-                <td><strong>{{ pokemon.name }}</strong></td>
-              </tr>
               <tr>
                 <td>Points de vie</td>
                 <td><strong>{{ pokemon.hp }}</strong></td>
@@ -34,13 +36,14 @@
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="card-action">
-          <a (click)="goToPokemonList()">Retour</a>
-          <a (click)="goToEditPokemon(pokemon)">Editer</a>
-          <a (click)="deletePokemon(pokemon)">Supprimer</a>
-        </div>
-      </div>
+
+          <div class="card-action black">
+            <a (click)="goToPokemonList()">Retour</a>
+            <a (click)="goToEditPokemon(pokemon)">Editer</a>
+            <a (click)="deletePokemon(pokemon)">Supprimer</a>
+          </div>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </div>

@@ -29,7 +29,7 @@ export class CardTypeColorTsPipe implements PipeTransform {
         color = 'card--normal';
         break;
       case 'Poison':
-        color = 'card--normal';
+        color = 'card--ice';
         break;
       case 'Fée':
         color = 'card--fairy';
@@ -47,9 +47,9 @@ export class CardTypeColorTsPipe implements PipeTransform {
         color = 'card--normal';
         break;
     }
-  
+
     return color;
-  
+
   }
 
 }

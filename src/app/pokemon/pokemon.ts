@@ -13,7 +13,7 @@ export class Pokemon {
         name: string = 'Entrez un nom',
         hp: number = 100,
         cp: number = 10,
-        picture: string = 'https://assets.pokemon.com/assets/cms2/img/pokedex/details/xxx.png',
+        picture: string = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/xxx.png',
         types: string[] = ['Normal'],
         created: Date = new Date
 

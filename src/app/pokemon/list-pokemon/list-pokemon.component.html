@@ -1,19 +1,17 @@
-<h1 class="center">Liste des Pokémons</h1>
+<h2 class="center">Liste des Pokémons</h2>
 <div class='container'>
-    <div class="row">
-
-      <div id="cards">
-        <figure *ngFor="let pokemon of pokemonList" (click)="goToPokemon(pokemon)" class="card {{ pokemon.types[0].toString() | cardTypeColorTs }}" >
-          <div class="card__image-container">
-            <img [src]="pokemon.picture" [alt]="pokemon.name" class="card__image">   
-          </div>
-          <figcaption class="card__caption">
-            <h1 class="card__name">{{pokemon.name}}</h1>
-        
-            
-        
-            <table class="card__stats">
-              <tbody><tr>
+  <div class="row">
+    <div id="cards">
+      <figure *ngFor="let pokemon of pokemonList" (click)="goToPokemon(pokemon)"
+        class="card {{ pokemon.types[0].toString() | cardTypeColorTs }}">
+        <div class="card__image-container">
+          <img [src]="pokemon.picture" [alt]="pokemon.name" class="card__image">
+        </div>
+        <figcaption class="card__caption">
+          <h1 class="card__name">{{pokemon.name}}</h1>
+          <table class="card__stats">
+            <tbody>
+              <tr>
                 <th>HP</th>
                 <td>{{pokemon.hp}}</td>
               </tr>
@@ -21,24 +19,20 @@
                 <th>Attaque</th>
                 <td>{{pokemon.cp}}</td>
               </tr>
-              
-              
-             
-              
-            </tbody></table>
-            
-            <span *ngFor="let type of pokemon.types" class="{{ type.toString() | pokemonTypeColor }}">
-              {{ type }}
-            </span>
-          </figcaption>
-        </figure>
-      </div>
+            </tbody>
+          </table>
+
+          <span *ngFor="let type of pokemon.types" class="{{ type.toString() | pokemonTypeColor }}">
+            {{ type }}
+          </span>
+        </figcaption>
+      </figure>
     </div>
+  </div>
 </div>
 
 
 
-  <!-- bouton ajout -->
-  <a class="btn-floating btn-large waves-effect waves-light red z-depth-3"
-    style="position: fixed; bottom: 25px; right: 25px;"
-    [routerLink]="['pokemon/add']">+</a>
+<!-- bouton ajout -->
+<a class="btn-floating btn-large waves-effect waves-light red z-depth-3"
+  style="position: fixed; bottom: 25px; right: 25px;" [routerLink]="['pokemon/add']">+</a>

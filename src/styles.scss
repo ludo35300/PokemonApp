@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.95),
+            rgba(86, 192, 224, 0.25)),
+        url("./assets/background4-poké.jpg");
+    background-size: cover;
+    min-height: 100vh;
+}
+
+h2 {
+    padding: 50px;
+}

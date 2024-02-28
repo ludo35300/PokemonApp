@@ -4,13 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from '../pokemon';
 import { PokemonTypeColorPipe } from "../pokemon-type-color.pipe";
 import { PokemonService } from '../pokemon.service';
+import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
 
 @Component({
   selector: 'app-detail-pokemon',
   standalone: true,
   templateUrl: './detail-pokemon.component.html',
   styleUrl: './detail-pokemon.component.scss',
-  imports: [NgIf, CommonModule, PokemonTypeColorPipe]
+  imports: [NgIf, CommonModule, PokemonTypeColorPipe, CardTypeColorTsPipe]
 })
 
 export class DetailPokemonComponent implements OnInit {

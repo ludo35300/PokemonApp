@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
   imports: [NgIf, NgFor, PokemonTypeColorPipe, FormsModule]
 })
 export class PokemonFormComponent implements OnInit {
+
   @Input() pokemon!: Pokemon;
   types!: string[];
   isAddForm!: boolean;
@@ -44,13 +45,13 @@ export class PokemonFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.isAddForm){
+    if (this.isAddForm) {
       this.pokemonService.addPokemon(this.pokemon)
         .subscribe((pokemon: Pokemon) => this.router.navigate(['/pokemon', pokemon.id]));
-    }else{
+    } else {
       this.pokemonService.updatePokemon(this.pokemon)
         .subscribe(() => this.router.navigate(['/pokemon', this.pokemon.id]));
-  
+
     }
   }
 
@@ -64,5 +65,9 @@ export class PokemonFormComponent implements OnInit {
     }
 
     return true;
+  }
+
+  goToPokemonList() {
+    this.router.navigate(['/pokemons']);
   }
 }
