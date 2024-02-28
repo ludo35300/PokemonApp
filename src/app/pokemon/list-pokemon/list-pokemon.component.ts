@@ -3,20 +3,24 @@ import { CommonModule, NgFor } from '@angular/common';
 import { Pokemon } from '../pokemon';
 import { BorderCardDirective } from '../border-card.directive';
 import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
+import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
 
 @Component({
-  selector: 'app-list-pokemon',
-  standalone: true,
-  imports: [
-    NgFor,
-    CommonModule,
-    BorderCardDirective,
-    PokemonTypeColorPipe
-  ],
-  templateUrl: './list-pokemon.component.html',
-  styleUrl: './list-pokemon.component.scss'
+    selector: 'app-list-pokemon',
+    standalone: true,
+    templateUrl: './list-pokemon.component.html',
+    styleUrl: './list-pokemon.component.scss',
+    imports: [
+        NgFor,
+        CommonModule,
+        BorderCardDirective,
+        PokemonTypeColorPipe,
+        RouterOutlet, RouterModule,
+        CardTypeColorTsPipe
+    ]
 })
 
 export class ListPokemonComponent implements OnInit {

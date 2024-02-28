@@ -1,22 +1,44 @@
 <h1 class="center">Liste des Pokémons</h1>
 <div class='container'>
     <div class="row">
-      <div *ngFor="let pokemon of pokemonList" class="col s6 m4">
-        <!-- pkmBorderCard = 'couleur'-->
-        <div (click)="goToPokemon(pokemon)" class="card horizontal"  pkmBorderCard>
-          <div class="card-image">
-            <img [src]="pokemon.picture">
+
+      <div id="cards">
+        <figure *ngFor="let pokemon of pokemonList" (click)="goToPokemon(pokemon)" class="card {{ pokemon.types[0].toString() | cardTypeColorTs }}" >
+          <div class="card__image-container">
+            <img [src]="pokemon.picture" [alt]="pokemon.name" class="card__image">   
           </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <p>{{ pokemon.name }}</p>
-              <p><small>{{ pokemon.created | date:"dd/MM/yyyy" }}</small></p>
-              <span *ngFor="let type of pokemon.types" class="{{ type.toString() | pokemonTypeColor }}">
-                {{ type }}
-              </span>
-            </div>
-          </div>
-        </div>
+          <figcaption class="card__caption">
+            <h1 class="card__name">{{pokemon.name}}</h1>
+        
+            
+        
+            <table class="card__stats">
+              <tbody><tr>
+                <th>HP</th>
+                <td>{{pokemon.hp}}</td>
+              </tr>
+              <tr>
+                <th>Attaque</th>
+                <td>{{pokemon.cp}}</td>
+              </tr>
+              
+              
+             
+              
+            </tbody></table>
+            
+            <span *ngFor="let type of pokemon.types" class="{{ type.toString() | pokemonTypeColor }}">
+              {{ type }}
+            </span>
+          </figcaption>
+        </figure>
       </div>
     </div>
-  </div>
+</div>
+
+
+
+  <!-- bouton ajout -->
+  <a class="btn-floating btn-large waves-effect waves-light red z-depth-3"
+    style="position: fixed; bottom: 25px; right: 25px;"
+    [routerLink]="['pokemon/add']">+</a>
