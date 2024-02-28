@@ -1,7 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { PokemonTypeColorPipe } from "../pokemon-type-color.pipe";
-import { PokemonService } from '../pokemon.service';
+import { PokemonService } from '../service/pokemon.service';
 import { Pokemon } from '../pokemon';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';

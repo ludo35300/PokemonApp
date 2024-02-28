@@ -3,7 +3,7 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from '../pokemon';
 import { PokemonTypeColorPipe } from "../pokemon-type-color.pipe";
-import { PokemonService } from '../pokemon.service';
+import { PokemonService } from '../service/pokemon.service';
 import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
 
 @Component({
@@ -15,7 +15,7 @@ import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
 })
 
 export class DetailPokemonComponent implements OnInit {
-  pokemonList!: Pokemon[];
+
   pokemon!: Pokemon | undefined;
 
   constructor(
@@ -32,12 +32,14 @@ export class DetailPokemonComponent implements OnInit {
     // si il y a bien un id (sinon id=undefined) (+ transforme string to number)
     if (pokemonId) {
       this.pokemonService.getPokemonById(+pokemonId)
-        .subscribe(pokemon => this.pokemon = pokemon);;
+        .subscribe(pokemon => this.pokemon = pokemon);
+
     }
   }
 
+
   deletePokemon(pokemon: Pokemon) {
-    this.pokemonService.deletePokemonById(pokemon.id)
+    this.pokemonService.deletePokemonById(pokemon.pokedexId)
       .subscribe(() => this.goToPokemonList());
   }
   goToPokemonList() {
@@ -45,6 +47,6 @@ export class DetailPokemonComponent implements OnInit {
   }
 
   goToEditPokemon(pokemon: Pokemon) {
-    this.router.navigate(['/edit/pokemon', pokemon.id]);
+    this.router.navigate(['/edit/pokemon', pokemon.pokedexId]);
   }
 }

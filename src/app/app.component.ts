@@ -3,8 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
@@ -15,8 +14,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     RouterOutlet,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule,
-    PokemonModule
+    PokemonModule, NgxPaginationModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

@@ -1,11 +1,34 @@
 <h2 class="center">Liste des Pokémons</h2>
 <div class='container'>
   <div class="row">
-    <div id="cards">
-      <figure *ngFor="let pokemon of pokemonList" (click)="goToPokemon(pokemon)"
-        class="card {{ pokemon.types[0].toString() | cardTypeColorTs }}">
+
+
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Rechercher par nom" />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">
+            Rechercher
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div id=" cards">
+      <!--    /* a mettre dans la balise class-->
+      <figure *ngFor="let pokemon of pokemonList | paginate : {
+          itemsPerPage: 6,
+          currentPage: 1,
+          totalItems: pokemonList.length
+        };" (click)="goToPokemon(pokemon)" class="card {{ pokemon.apiTypes[0].name | cardTypeColorTs }}">
+
         <div class="card__image-container">
-          <img [src]="pokemon.picture" [alt]="pokemon.name" class="card__image">
+          <p>{{ pokemon.name }}</p>
+          <img [src]="pokemon.image" [alt]="pokemon.name" class="card__image">
         </div>
         <figcaption class="card__caption">
           <h1 class="card__name">{{pokemon.name}}</h1>
@@ -13,26 +36,24 @@
             <tbody>
               <tr>
                 <th>HP</th>
-                <td>{{pokemon.hp}}</td>
+                <td>{{pokemon.stats.HP}}</td>
               </tr>
               <tr>
                 <th>Attaque</th>
-                <td>{{pokemon.cp}}</td>
+                <td>{{pokemon.stats.attack}}</td>
               </tr>
             </tbody>
           </table>
 
-          <span *ngFor="let type of pokemon.types" class="{{ type.toString() | pokemonTypeColor }}">
-            {{ type }}
+          <span *ngFor="let type of pokemon.apiTypes" class="{{ type.name | pokemonTypeColor }}">
+            {{ type.name }}
           </span>
         </figcaption>
       </figure>
     </div>
+
+    <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"></pagination-controls>
+
+
   </div>
 </div>
-
-
-
-<!-- bouton ajout -->
-<a class="btn-floating btn-large waves-effect waves-light red z-depth-3"
-  style="position: fixed; bottom: 25px; right: 25px;" [routerLink]="['pokemon/add']">+</a>

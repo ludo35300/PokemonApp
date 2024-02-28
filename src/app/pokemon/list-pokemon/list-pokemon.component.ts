@@ -5,22 +5,24 @@ import { BorderCardDirective } from '../border-card.directive';
 import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
 import { Router, RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { PokemonService } from '../pokemon.service';
-import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
+import { PokemonService } from '../service/pokemon.service';
+import { CardTypeColorTsPipe } from '../card-type-color.ts.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
-    selector: 'app-list-pokemon',
-    standalone: true,
-    templateUrl: './list-pokemon.component.html',
-    styleUrl: './list-pokemon.component.scss',
-    imports: [
-        NgFor,
-        CommonModule,
-        BorderCardDirective,
-        PokemonTypeColorPipe,
-        RouterOutlet, RouterModule,
-        CardTypeColorTsPipe
-    ]
+  selector: 'app-list-pokemon',
+  standalone: true,
+  templateUrl: './list-pokemon.component.html',
+  styleUrl: './list-pokemon.component.scss',
+  imports: [
+    NgFor,
+    CommonModule,
+    BorderCardDirective,
+    PokemonTypeColorPipe,
+    RouterOutlet, RouterModule,
+    CardTypeColorTsPipe,
+    NgxPaginationModule
+  ]
 })
 
 export class ListPokemonComponent implements OnInit {
@@ -33,10 +35,10 @@ export class ListPokemonComponent implements OnInit {
 
   ngOnInit() {
     this.pokemonService.getPokemonList()
-      .subscribe(pokemonList => this.pokemonList = pokemonList)
+      .subscribe(pokemonList => this.pokemonList = pokemonList);
   }
 
   goToPokemon(pokemon: Pokemon) {
-    this.router.navigate(['/pokemon/', pokemon.id])
+    this.router.navigate(['/pokemon/', pokemon.pokedexId])
   }
 }

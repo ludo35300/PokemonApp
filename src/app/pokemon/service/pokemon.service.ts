@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pokemon } from './pokemon';
+import { Pokemon } from '../pokemon';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, of, tap } from 'rxjs';
 
@@ -12,30 +12,25 @@ export class PokemonService {
   }
 
 
+  /* API
+  Afficher les type : https://pokebuildapi.fr/api/v1/types
+
+
+  */
   // retourne la liste pokémons
+
   getPokemonList(): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>('api/pokemons').pipe(
-      tap((pokemonList) => console.table(pokemonList)),
-      catchError((error) => this.handleError(error, []))
-    );
-  }
-  // retourne le pokemon correspondant a l'id
-  getPokemonById(pokemonId: number): Observable<Pokemon | undefined> {
-    return this.http.get<Pokemon>(`api/pokemons/${pokemonId}`).pipe(
-      tap((response) => this.log(response)),
-      catchError((error) => this.handleError(error, undefined))
-    );
+    return this.http.get<Pokemon[]>('https://pokebuildapi.fr/api/v1/pokemon/limit/20');
   }
 
-  updatePokemon(pokemon: Pokemon): Observable<Pokemon | undefined> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-type': 'application/json' })
-    };
-    return this.http.put('api/pokemons', pokemon, httpOptions).pipe(
-      tap((response) => this.log(response)),
-      catchError((error) => this.handleError(error, null))
-    )
+
+
+  // retourne le pokemon correspondant a l'id
+  getPokemonById(pokemonId: number): Observable<Pokemon | undefined> {
+    return this.http.get<Pokemon>(`https://pokebuildapi.fr/api/v1/pokemon/${pokemonId}`);
   }
+
+
 
   deletePokemonById(pokemonId: number): Observable<null> {
     return this.http.delete(`api/pokemons/${pokemonId}`).pipe(
