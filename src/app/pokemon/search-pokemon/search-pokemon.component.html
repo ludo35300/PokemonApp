@@ -1,0 +1,15 @@
+<div class="input-group rounded ms-4">
+    <input #searchBox type="search" (keyup)="search(searchBox.value)" class="form-control rounded" placeholder="Rechercher un Pokémon" aria-label="Search" aria-describedby="search-addon" />
+    <span class="input-group-text border-0" id="search-addon">
+      <i class="fas fa-search"></i>
+    </span>
+
+    
+</div>
+<div *ngFor="let pokemon of pokemons$ | async" class="input-group rounded ms-4">
+    <button 
+            (click)="goToDetail(pokemon)"
+            class="form-control rounded" >
+            {{ pokemon.name }}
+    </button>
+</div>

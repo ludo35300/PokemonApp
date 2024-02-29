@@ -1,10 +1,10 @@
 <div class='container'>
   <div *ngIf="pokemon" class="row">
     <h2 class="header center">{{ pokemon.name }}</h2>
-    <div id="cards">
+    <div id="col-md-4 offset-md-3">
 
 
-      <figure class="card {{ pokemon.types[0].toString() | cardTypeColorTs }}">
+      <figure class="figure card {{ pokemon.types[0].toString() | cardTypeColorTs }}">
         <div class="card__image-container">
           <img [src]="pokemon.picture" [alt]="pokemon.name" class="card__image">
         </div>
@@ -37,14 +37,16 @@
             </tbody>
           </table>
 
-          <div class="card-action black">
-            <a (click)="goToPokemonList()">Retour</a>
-            <a (click)="goToEditPokemon(pokemon)">Editer</a>
-            <a (click)="deletePokemon(pokemon)">Supprimer</a>
+          <div class="col-3 card-action black">
+            <a (click)="goToPokemonList()" class="btn btn-primary ms-3">Retour</a>
+            <a (click)="goToEditPokemon(pokemon)" class="btn btn-primary ms-3">Editer</a>
+            <a (click)="deletePokemon(pokemon)" class="btn btn-primary ms-3">Supprimer</a>
           </div>
         </figcaption>
       </figure>
     </div>
   </div>
 </div>
-<h4 *ngIf='!pokemon' class="center">Aucun pokémon à afficher !</h4>
+<h4 *ngIf='!pokemon' class="center">
+  <app-loader></app-loader>
+</h4>

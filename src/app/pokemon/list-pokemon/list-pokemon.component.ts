@@ -7,6 +7,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
 import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
+import { SearchPokemonComponent } from "../search-pokemon/search-pokemon.component";
 
 @Component({
     selector: 'app-list-pokemon',
@@ -19,7 +20,8 @@ import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
         BorderCardDirective,
         PokemonTypeColorPipe,
         RouterOutlet, RouterModule,
-        CardTypeColorTsPipe
+        CardTypeColorTsPipe,
+        SearchPokemonComponent
     ]
 })
 

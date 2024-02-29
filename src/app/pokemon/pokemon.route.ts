@@ -4,22 +4,27 @@ import { ListPokemonComponent } from "./list-pokemon/list-pokemon.component";
 import { DetailPokemonComponent } from "./detail-pokemon/detail-pokemon.component";
 import { EditPokemonComponent } from "./edit-pokemon/edit-pokemon.component";
 import { AddPokemonComponent } from "./add-pokemon/add-pokemon.component";
+import { AuthGuard } from '../auth.guard';
 
 export const pokemonRoutes: Routes = [
   {
     path: 'edit/pokemon/:id',
-    loadComponent: () => import('./edit-pokemon/edit-pokemon.component').then(module => EditPokemonComponent),
+    component: EditPokemonComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'pokemons/pokemon/add',
-    loadComponent: () => import('./add-pokemon/add-pokemon.component').then(module => AddPokemonComponent),
+    component: AddPokemonComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'pokemons',
-    loadComponent: () => import('./list-pokemon/list-pokemon.component').then(module => ListPokemonComponent),
+    component: ListPokemonComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'pokemon/:id',
-    loadComponent: () => import('./detail-pokemon/detail-pokemon.component').then(module => DetailPokemonComponent),
+    component: DetailPokemonComponent,
+    canActivate: [AuthGuard]
   }
 ];
