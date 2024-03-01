@@ -3,7 +3,7 @@ import { Pokemon } from '../pokemon';
 import { Router } from '@angular/router';
 import { Observable, Subject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { PokemonService } from '../pokemon.service';
+import { PokemonService } from '../services/pokemon.service';
 
 @Component({
   selector: 'app-search-pokemon',
@@ -32,7 +32,7 @@ export class SearchPokemonComponent implements OnInit{
   }
 
   goToDetail(pokemon: Pokemon){
-    const link = ['/pokemon', pokemon.id];
+    const link = ['/pokemon', pokemon.pokedexId];
     this.router.navigate(link);
   }
 

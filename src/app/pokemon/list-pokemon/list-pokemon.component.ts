@@ -5,8 +5,9 @@ import { BorderCardDirective } from '../border-card.directive';
 import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
 import { Router, RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { PokemonService } from '../pokemon.service';
+import { PokemonService } from '../services/pokemon.service';
 import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchPokemonComponent } from "../search-pokemon/search-pokemon.component";
 
 @Component({
@@ -21,12 +22,14 @@ import { SearchPokemonComponent } from "../search-pokemon/search-pokemon.compone
         PokemonTypeColorPipe,
         RouterOutlet, RouterModule,
         CardTypeColorTsPipe,
-        SearchPokemonComponent
+        SearchPokemonComponent,
+        NgxPaginationModule
     ]
 })
 
 export class ListPokemonComponent implements OnInit {
   pokemonList!: Pokemon[];
+  page: number = 1;
 
   constructor(
     private router: Router,
@@ -39,6 +42,6 @@ export class ListPokemonComponent implements OnInit {
   }
 
   goToPokemon(pokemon: Pokemon) {
-    this.router.navigate(['/pokemon/', pokemon.id])
+    this.router.navigate(['/pokemon/', pokemon.pokedexId])
   }
 }

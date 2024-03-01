@@ -1,46 +1,47 @@
-<div class='container'>
+<div class="container p-4">
   <div *ngIf="pokemon" class="row">
-    <h2 class="header center">{{ pokemon.name }}</h2>
-    <div id="col-md-4 offset-md-3">
+    <div class="col-md-6 offset-md-3">
 
 
-      <figure class="figure card {{ pokemon.types[0].toString() | cardTypeColorTs }}">
+      <figure class="figure card {{ pokemon.apiTypes[0].name.toString() | cardTypeColorTs }}">
         <div class="card__image-container">
-          <img [src]="pokemon.picture" [alt]="pokemon.name" class="card__image">
+          <img [src]="pokemon.image" [alt]="pokemon.name" class="card__image">
         </div>
 
         <figcaption class="card__caption">
-          <h1 class="card__name">{{pokemon.name}}</h1>
+          <h1 class="card__name p-3">{{pokemon.name}}</h1>
 
 
-          <table class="card__stats">
+          <table class="table">
             <tbody>
               <tr>
-                <td>Points de vie</td>
-                <td><strong>{{ pokemon.hp }}</strong></td>
+                <td >Points de vie</td>
+                <td class="text-sm-start"><strong>{{ pokemon.stats.HP }}</strong></td>
               </tr>
               <tr>
-                <td>Dégâts</td>
-                <td><strong>{{ pokemon.cp }}</strong></td>
+                <td>Points d'attaque</td>
+                <td><strong>{{ pokemon.stats.attack }}</strong></td>
+              </tr>
+              <tr>
+                <td>Points de défense</td>
+                <td><strong>{{ pokemon.stats.defense }}</strong></td>
+              </tr>
+              <tr>
+                <td>Vitesse</td>
+                <td><strong>{{ pokemon.stats.speed }}</strong></td>
               </tr>
               <tr>
                 <td>Types</td>
                 <td>
-                  <span *ngFor="let type of pokemon.types" class="{{ type.toString() | pokemonTypeColor }}">{{ type
+                  <span *ngFor="let type of pokemon.apiTypes" class="{{ type.name.toString() | pokemonTypeColor }}">{{ type.name
                     }}</span>
                 </td>
-              </tr>
-              <tr>
-                <td>Date de création</td>
-                <td><em>{{ pokemon.created | date:"dd/MM/yyyy" }}</em></td>
               </tr>
             </tbody>
           </table>
 
           <div class="col-3 card-action black">
-            <a (click)="goToPokemonList()" class="btn btn-primary ms-3">Retour</a>
-            <a (click)="goToEditPokemon(pokemon)" class="btn btn-primary ms-3">Editer</a>
-            <a (click)="deletePokemon(pokemon)" class="btn btn-primary ms-3">Supprimer</a>
+            <a (click)="goToPokemonList()" class="btn btn-info ms-3">Retour</a>
           </div>
         </figcaption>
       </figure>

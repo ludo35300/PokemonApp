@@ -1,16 +1,19 @@
 <h2 class="text-center">Liste des Pokémons</h2>
-<div class="container  text-center">
+<div class="container  text-center p-4 mb-4">
   <div class="row">
 
     <!-- Composant Champs de recherche -->
     <app-search-pokemon></app-search-pokemon>
 
     <!-- affichage de toutes les cartes  *ngFor-->
-    <div id="col-12 cards">
-      <figure *ngFor="let pokemon of pokemonList" (click)="goToPokemon(pokemon)"
-        class="card {{ pokemon.types[0].toString() | cardTypeColorTs }}">
+    <div class="col-12 cards">
+      <figure  *ngFor="let pokemon of pokemonList | paginate : {
+        itemsPerPage: 6,
+        currentPage: page,
+      };"  (click)="goToPokemon(pokemon)"
+        class="card {{ pokemon.apiTypes[0].name.toString() | cardTypeColorTs }}">
         <div class="card__image-container">
-          <img [src]="pokemon.picture" [alt]="pokemon.name" class="card__image">
+          <img [src]="pokemon.image" [alt]="pokemon.name" class="card__image">
         </div>
         <figcaption class="card__caption">
           <h1 class="card__name">{{pokemon.name}}</h1>
@@ -18,28 +21,34 @@
             <tbody>
               <tr>
                 <th>HP</th>
-                <td>{{pokemon.hp}}</td>
+                <td>{{pokemon.stats.HP }}</td>
               </tr>
               <tr>
                 <th>Attaque</th>
-                <td>{{pokemon.cp}}</td>
+                <td>{{pokemon.stats.attack}}</td>
               </tr>
             </tbody>
           </table>
 
-          <span *ngFor="let type of pokemon.types" class="{{ type.toString() | pokemonTypeColor }}">
-            {{ type }}
+          <span *ngFor="let type of pokemon.apiTypes" class="{{ type.name | pokemonTypeColor }}">
+            {{ type.name }}
           </span>
         </figcaption>
       </figure>
     </div>
 
-    
+    <div class="col-12 mt-5" >
+      <pagination-controls 
+          [responsive]="true"
+          previousLabel=""
+          nextLabel=""
+          class="my-pagination" (pageChange)="page = $event">
+      </pagination-controls>
+    </div>
   </div>
 </div>
 
 
 
-<!-- bouton ajout -->
-<a class="btn btn-danger btn-lg z-depth-3"
-  style="position: fixed; bottom: 25px; right: 25px;" [routerLink]="['pokemon/add']">+</a>
+
+

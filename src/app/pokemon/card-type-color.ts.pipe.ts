@@ -8,6 +8,7 @@ export class CardTypeColorTsPipe implements PipeTransform {
 
   transform(type: string): string {
     let color: string;
+    console.log(type);
 
     switch (type) {
       case 'Feu':

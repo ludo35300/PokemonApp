@@ -3,7 +3,7 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from '../pokemon';
 import { PokemonTypeColorPipe } from "../pokemon-type-color.pipe";
-import { PokemonService } from '../pokemon.service';
+import { PokemonService } from '../services/pokemon.service';
 import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
 import { LoaderComponent } from "../loader/loader.component";
 
@@ -38,7 +38,7 @@ export class DetailPokemonComponent implements OnInit {
   }
 
   deletePokemon(pokemon: Pokemon) {
-    this.pokemonService.deletePokemonById(pokemon.id)
+    this.pokemonService.deletePokemonById(pokemon.pokedexId)
       .subscribe(() => this.goToPokemonList());
   }
   goToPokemonList() {
@@ -46,6 +46,6 @@ export class DetailPokemonComponent implements OnInit {
   }
 
   goToEditPokemon(pokemon: Pokemon) {
-    this.router.navigate(['/edit/pokemon', pokemon.id]);
+    this.router.navigate(['/edit/pokemon', pokemon.pokedexId]);
   }
 }

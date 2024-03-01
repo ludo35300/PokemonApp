@@ -206,3 +206,53 @@ h5 {
 }
 
 }
+/*** PAGINATION ****/
+/* GENERAL STYLES */
+
+
+
+
+
+.my-pagination ::ng-deep .ngx-pagination {
+  padding: 20px 0;
+  border-radius: 15px;
+  margin: 5px;
+  background: rgba(#ffffff, 0.65);
+}
+.my-pagination ::ng-deep .ngx-pagination .current{
+  background-color: #6fb8eb !important;
+  border-radius: 100% !important;
+  color: #fff !important;
+}
+
+.my-pagination ::ng-deep .ngx-pagination li{
+  background-color: #9f9f9f !important;
+  border-radius: 100% !important;
+  color: #fff !important;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a:hover{
+  border-radius: 100% !important;
+}
+
+/*
+
+.my-pagination ::ng-deep .ngx-pagination ul li {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  text-align: center;
+}
+
+.my-pagination ::ng-deep .ngx-pagination ul li li.is-active{
+  
+}
+
+
+
+
+
+
+
+*/
