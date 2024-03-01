@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from '../pokemon';
 import { PokemonTypeColorPipe } from "../pokemon-type-color.pipe";
@@ -11,7 +11,7 @@ import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
   standalone: true,
   templateUrl: './detail-pokemon.component.html',
   styleUrl: './detail-pokemon.component.scss',
-  imports: [NgIf, CommonModule, PokemonTypeColorPipe, CardTypeColorTsPipe]
+  imports: [CommonModule, PokemonTypeColorPipe, CardTypeColorTsPipe]
 })
 
 export class DetailPokemonComponent implements OnInit {

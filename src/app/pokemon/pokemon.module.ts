@@ -8,7 +8,6 @@ import { PokemonService } from './service/pokemon.service';
 import { RouterModule } from '@angular/router';
 import { pokemonRoutes } from './pokemon.route';
 import { FormsModule } from '@angular/forms';
-import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -20,8 +19,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PokemonTypeColorPipe,
     BorderCardDirective,
     FormsModule,
-    RouterModule.forChild(pokemonRoutes),
-    NgxPaginationModule
+    RouterModule.forChild(pokemonRoutes)
   ],
   providers: [PokemonService]
 })
