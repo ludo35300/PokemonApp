@@ -10,11 +10,11 @@ export const pokemonRoutes: Routes = [
   {
     path: 'pokemons',
     component: ListPokemonComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'pokemon/:id',
     component: DetailPokemonComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   }
 ];
