@@ -1,51 +1,56 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  message: string = 'Vous êtes déconnecté. (ludo/ludo)';
+  message!: string;
   name!: string;
   password!: string;
   auth!: AuthService;
 
-  constructor(private authService: AuthService, private router: Router){}
+  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.auth = this.authService;
-  }
-
-  setMessage(){
-    if(this.auth.isLoggedIn){
-      this.message='Vous êtes connecté';
-    }else{
-      this.message='Identifiant ou mot de passe incorrect';
+    if (this.auth.isLoggedIn) {
+      this.message = "Vous êtes connecté"
+    } else {
+      this.message = "Vous êtes déconnecté (ludo/ludo)"
     }
   }
 
-  login(){
+  setMessage() {
+    if (this.auth.isLoggedIn) {
+      this.message = 'Vous êtes connecté';
+    } else {
+      this.message = 'Identifiant ou mot de passe incorrect';
+    }
+  }
+
+  login() {
     this.message = ' Tentative de connexion en cours';
-    this.auth.login(this.name, this.password).subscribe((isLoggedIn: boolean) =>{
+    this.auth.login(this.name, this.password).subscribe((isLoggedIn: boolean) => {
       this.setMessage();
-      if(isLoggedIn){
+      if (isLoggedIn) {
         this.router.navigate(['/pokemons']);
-      }else{
+      } else {
         this.password = '';
         this.router.navigate(['/login'])
       }
-      
+
     })
   }
 
-  logout(){
+  logout() {
     this.auth.logout();
     this.message = 'Vous êtes déconnecté'
   }

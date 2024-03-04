@@ -6,16 +6,18 @@ import { PokemonTypeColorPipe } from "../pokemon-type-color.pipe";
 import { PokemonService } from '../services/pokemon.service';
 import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
 import { LoaderComponent } from "../loader/loader.component";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
-    selector: 'app-detail-pokemon',
-    standalone: true,
-    templateUrl: './detail-pokemon.component.html',
-    styleUrl: './detail-pokemon.component.scss',
-    imports: [CommonModule, PokemonTypeColorPipe, CardTypeColorTsPipe, LoaderComponent]
+  selector: 'app-detail-pokemon',
+  standalone: true,
+  templateUrl: './detail-pokemon.component.html',
+  styleUrl: './detail-pokemon.component.scss',
+  imports: [CommonModule, PokemonTypeColorPipe, CardTypeColorTsPipe, LoaderComponent, HeaderComponent]
 })
 
 export class DetailPokemonComponent implements OnInit {
+  title: string = 'Détails du pokémon';
   pokemonList!: Pokemon[];
   pokemon!: Pokemon | undefined;
 

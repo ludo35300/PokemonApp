@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container p-4">
   <div *ngIf="pokemon" class="row">
     <div class="col-md-6 offset-md-3">
@@ -15,7 +16,7 @@
           <table class="table">
             <tbody>
               <tr>
-                <td >Points de vie</td>
+                <td>Points de vie</td>
                 <td class="text-sm-start"><strong>{{ pokemon.stats.HP }}</strong></td>
               </tr>
               <tr>
@@ -33,7 +34,8 @@
               <tr>
                 <td>Types</td>
                 <td>
-                  <span *ngFor="let type of pokemon.apiTypes" class="{{ type.name.toString() | pokemonTypeColor }}">{{ type.name
+                  <span *ngFor="let type of pokemon.apiTypes" class="{{ type.name.toString() | pokemonTypeColor }}">{{
+                    type.name
                     }}</span>
                 </td>
               </tr>

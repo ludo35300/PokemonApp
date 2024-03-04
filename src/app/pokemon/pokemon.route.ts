@@ -1,5 +1,5 @@
 
-import {  Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { ListPokemonComponent } from "./list-pokemon/list-pokemon.component";
 import { DetailPokemonComponent } from "./detail-pokemon/detail-pokemon.component";
 
@@ -10,7 +10,8 @@ export const pokemonRoutes: Routes = [
   {
     path: 'pokemons',
     component: ListPokemonComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    title: 'Liste des Pokémons'
   },
   {
     path: 'pokemon/:id',

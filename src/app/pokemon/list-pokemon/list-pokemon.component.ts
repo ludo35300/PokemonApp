@@ -9,25 +9,30 @@ import { PokemonService } from '../services/pokemon.service';
 import { CardTypeColorTsPipe } from "../card-type-color.ts.pipe";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchPokemonComponent } from "../search-pokemon/search-pokemon.component";
+import { HeaderComponent } from "../header/header.component";
+import { NgxSearchFilterModule } from 'ngx-search-filter';
 
 @Component({
-    selector: 'app-list-pokemon',
-    standalone: true,
-    templateUrl: './list-pokemon.component.html',
-    styleUrl: './list-pokemon.component.scss',
-    imports: [
-        NgFor,
-        CommonModule,
-        BorderCardDirective,
-        PokemonTypeColorPipe,
-        RouterOutlet, RouterModule,
-        CardTypeColorTsPipe,
-        SearchPokemonComponent,
-        NgxPaginationModule
-    ]
+  selector: 'app-list-pokemon',
+  standalone: true,
+  templateUrl: './list-pokemon.component.html',
+  styleUrl: './list-pokemon.component.scss',
+  imports: [
+    NgFor,
+    CommonModule,
+    BorderCardDirective,
+    PokemonTypeColorPipe,
+    RouterOutlet, RouterModule,
+    CardTypeColorTsPipe,
+    SearchPokemonComponent,
+    NgxPaginationModule,
+    HeaderComponent,
+    NgxSearchFilterModule
+  ]
 })
 
 export class ListPokemonComponent implements OnInit {
+  titre: string = 'Liste des Pokémons';
   pokemonList!: Pokemon[];
   page: number = 1;
 

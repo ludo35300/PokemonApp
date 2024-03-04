@@ -8,6 +8,7 @@ import { PokemonService } from './services/pokemon.service';
 import { RouterModule } from '@angular/router';
 import { pokemonRoutes } from './pokemon.route';
 import { FormsModule } from '@angular/forms';
+import { NgxSearchFilterModule } from 'ngx-search-filter';
 
 
 
@@ -19,8 +20,11 @@ import { FormsModule } from '@angular/forms';
     PokemonTypeColorPipe,
     BorderCardDirective,
     FormsModule,
-    RouterModule.forChild(pokemonRoutes)
+    RouterModule.forChild(pokemonRoutes),
+    NgxSearchFilterModule
   ],
   providers: [PokemonService]
 })
-export class PokemonModule { }
+export class PokemonModule {
+
+}

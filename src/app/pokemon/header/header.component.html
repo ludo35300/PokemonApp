@@ -1,0 +1,28 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" [routerLink]="['/pokemons']">PockéLudo</a>
+
+
+        <button class="navbar-toggler btn-danger" type="button">
+            <span class="navbar-toggler-icon" [routerLink]="['/login']" class="btn btn-danger">Déconnexion</span>
+        </button>
+
+
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav ms-auto">
+                <h3 class="text-center text-white">{{ titre }}</h3>
+
+            </div>
+            <div class="navbar-nav ms-auto ">
+                <div class="md-form my-0">
+                    <button [routerLink]="['/login']" class="btn btn-danger">Déconnexion</button>
+                </div>
+            </div>
+        </div>
+        <!-- Collapsible content -->
+    </div>
+</nav>
+<!--/.Navbar-->

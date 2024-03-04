@@ -1,17 +1,20 @@
 <div class="col-md-6 offset-md-3 text-left p-4 ">
-<div class="input-group rounded ms-4">
-    <input #searchBox type="search" (keyup)="search(searchBox.value)" class="form-control rounded text-center" placeholder="Rechercher un Pokémon" aria-label="Search" aria-describedby="search-addon" />
-    <span class="input-group-text border-0" id="search-addon">
-      <i class="fas fa-search"></i>
-    </span>
+  <div id="search-component">
+    <input #searchBox type="search" id="search-box" (input)="search(searchBox.value)"
+      class="form-control rounded text-center" placeholder="Rechercher un Pokémon" aria-label="Search"
+      aria-describedby="search-addon" (ngModel)="searchTerms" />
 
-    
-</div>
-<div *ngFor="let pokemon of pokemons$ | async" class="input-group rounded ms-4">
-    <button 
-            (click)="goToDetail(pokemon)"
-            class="form-control rounded text-left" >
-            {{ pokemon.name }}
-    </button>
-</div>
+
+
+    <ul class="search-result">
+      <li *ngFor="let pokemon of pokemons$ | async | filter:searchBox.value" class="">
+        <a (click)="goToDetail(pokemon)">
+          {{ pokemon.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+
 </div>
